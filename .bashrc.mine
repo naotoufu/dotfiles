@@ -1,0 +1,125 @@
+# -*- mode: shell-script -*-
+#---------------------Language Cygwin---------------------
+export LANG=ja_JP.UTF-8
+
+# modify corruption of text on windows command
+WINCMDS="arp ipconfig netstat net ping route nslookup nbtstat net java javac where takeown icacls"
+for i in $WINCMDS; do
+    alias $i="wincmd $i"
+done
+
+function wincmd() {
+    local CMD=$1
+    shift
+    ($CMD $* 2>&1 | nkf -w | dos2unix) 2>&1 | nkf -w | dos2unix 1>&2
+}
+
+#Warning surfficient
+export CYGWIN=nodosfilewarning
+
+. ~/bin/cdd
+
+cd() {
+    builtin cd "$@"
+      local ret=$?
+        ((ret)) || _cdd_chpwd
+          return $ret
+}
+
+#------------------ALIAS--------------------------
+#AutoHotKey
+alias ahk='$HOME/tools/AutoHotkey111404_ansi/AutoHotkey.exe'
+
+#cygstart
+alias open='cygstart'
+
+#chrome.exe
+alias chrome='/cygdrive/c/Program\ Files/Google/Chrome/Application/chrome.exe'
+
+#iexplore.exe
+alias iexplore='/cygdrive/c/Program\ Files/Internet\ Explorer/iexplore.exe'
+
+#NTemacs
+alias emacs='/cygdrive/c/emacs-24.3-bin-i386/emacs-24.3/bin/emacs.exe'
+
+#------------------PATH configuration--------------------------
+export PATH=/bin:/sbin:/lib:/usr/local/bin:/cygdrive/c/MinGW/bin:/cygdrive/c/Program\ Files/Java/jdk1.6.0_31/bin:/cygdrive/c/Program\ Files/Java/jre8/bin:/local/postfix:/cygdrive/c/emacs-24.3-bin-i386/emacs-24.3/bin:/cygdrive/c/Program\ Files/gvim/bin:/cygdrive/c/gtk/bin:"$PATH"
+
+# PATH=(
+#     /bin
+#     /sbin
+#     /lib
+#     /usr/local/bin
+#     /cygdrive/c/MinGW/bin
+#     /cygdrive/c/Program\ Files/Java/jdk1.6.0_31/bin
+#     /cygdrive/c/Program\ Files/Java/jre8/bin
+#     /local/postfix
+#     /cygdrive/c/emacs-24.3-bin-i386/emacs-24.3/bin
+#     /cygdrive/c/Program\ Files/gvim/bin
+#     /cygdrive/c/gtk/bin
+#     "$PATH"
+# )
+
+#/cygdrive/c/Program\ Files/Java/jdk1.6.0_31/bin:
+
+#------------------------------HOME JAVA,Apache,Tomcat--------------------------------
+
+#JAVA_HOME
+export JAVA_HOME='/cygdrive/c/Program Files/Java/jdk1.6.0_31/bin'
+
+#Apache_HOME
+
+export APACHE_HOME='/cygdrive/c/Apache Software Foundation/Apache2.2'
+
+#Apache Tomcat CATALINA_HOME
+export CATALINA_HOME='/cygdrive/c/Apache Software Foundation/Tomcat 6.0'
+#'/cygdrive/c/Program Files/Apache Software Foundation/Tomcat 8.0'
+
+#------------------------------GTK for Windows-------------------------------
+
+#GTK
+export GTK_BASEPATH='/cygdrive/c/gtk'
+export LIB=${GTK_BASEPATH}/lib
+
+#PKG_CONFIG
+export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:'/cygdrive/c/gtk/lib/pkgconfig'
+
+#export LD_LIBRARY_PATH="/usr/local/lib"
+
+#------------------------------OpenGL for Windows-------------------------------
+
+# function ccgl() { gcc -o -I/usr/include/w32api/ "$@" -L/usr/lib/w32api/ -lglut32 -lm -lopengl32 -lglu32 }
+
+#---------------------NetForce---------------------
+
+# DELL server
+export DELLserv='\\192.168.30.248'
+# DELL CF construct folder
+export target=${DELLserv}/Projects/kyomu/新システム（教務クラウド）/仕切り直し/構築/
+
+# ASU VM
+export ASUvm='\\192.168.30.68'
+# ASUvm tomcat logs folder
+export ASU_TomcatLogs=${ASUvm}/ASU/Apache\ Software\ Foundation/Tomcat\ 6.0/logs
+export ASU_MainJSPcf=${ASUvm}/cf/Apache\ Software\ Foundation/Tomcat\ 6.0/webapps/CampusForce/Main/
+
+# CAMPUSFORCE server
+export CFserv='\\192.168.30.100'
+export CFserv_TomcatLogs=${CFserv}/cf/Apache\ Software\ Foundation/Tomcat\ 6.0/logs
+export CFserv_MainJSPcf=${CFserv}/cf/Apache\ Software\ Foundation/Tomcat\ 6.0/webapps/CampusForce/Main/
+
+#ALIAS MakeHTML.exe
+alias makehtml='/cygdrive/c/Users/netforce/Documents/Visual\ Studio\ 2008/Projects/MakeHTML\ V3_1/MakeHTML/bin/Debug/MakeHTML.exe'
+
+export VisualStudio2008='/cygdrive/c/Users/netforce/Documents/Visual Studio 2008'
+export MAKEHTML="${VisualStudio2008}/Projects/MakeHTML V3_1/MakeHTML/bin/Debug"
+export MAKEHTML_JSP="${VisualStudio2008}/Projects/MakeHTML V3_1/MakeHTML/bin/Debug/Source/JSP"
+
+export WORKS='/cygdrive/c/Users/netforce/Documents/works/'
+
+#------------------------------ etc... -------------------------------
+# User specific aliases and functions
+stty stop undef
+
+# ENVIRONMENT VALUE $EDITOR
+export EDITOR=emacs

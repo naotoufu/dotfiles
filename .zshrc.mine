@@ -1,0 +1,120 @@
+# -*- mode: shell-script -*-
+# users generic .zshrc.mine file for windows cygwin
+
+## Default shell configuration
+#
+# set prompt
+#
+# show 1 row
+# PROMPT="%~ %# "
+# show 2 row
+PROMPT="%{${fg[red]}%}[%n@%m]%{${reset_color}%} %~
+%# "
+
+# start process in zsh , no hang up
+setopt nohup
+# no beep sound warning
+setopt no_beep
+
+# extended glob
+setopt extended_glob
+
+## etc...
+
+stty stop undef
+
+# Appoint word of partision character
+autoload -Uz select-word-style
+select-word-style default
+zstyle ':zle:*' word-chars " /=;@:{},|._"
+zstyle ':zle:*' word-style unspecified
+
+# set zmv
+autoload -Uz zmv
+#alias zmv='noglob zmv -W'
+
+## function
+# mkcd creates a directory hierarchy, then cds into it all in one
+# swell foop. To use it in your shell, run it as:
+function mkcd
+{
+    dir="$*";
+    mkdir -p "$dir" && cd "$dir";
+}
+
+# OpenGL Compiler
+function ccgl {
+    gcc -o -I/usr/include/w32api/ "$@" -L/usr/lib/w32api/ -lglut32 -lm -lopengl32 -lglu32
+}
+
+# Completion candidacy coloring
+#case "${TERM}" in
+#    cygwin*)
+#        export SHELL=zsh
+#        eval `dircolors`
+#        export ZLS_COLORS=$LS_COLORS
+#        zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+#        # Display file classification maker by all complement candidacy
+#        setopt list_types
+#        # Display and close complement candidacy
+#        #setopt list_packed
+#        ;;
+#esac
+
+# ターミナル、ウィンドウのタイトルの設定
+case "${TERM}" in
+    kterm*|xterm*)
+        precmd() {
+            echo -ne "\033]0;${USER}@${HOST}\007"
+        }
+        ;;
+    screen*)
+        if [ "$OS" != "Windows_NT" ]
+        then
+            preexec() {
+                mycmd=(${(s: :)${1}})
+                echo -ne "\ek$(hostname|awk 'BEGIN{FS="."}{print $1}'):#$mycmd[1]\e\\"
+            }
+            precmd() {
+                echo -ne "\ek$(hostname|awk 'BEGIN{FS="."}{print $1}'):$(basename $(pwd))\e\\"
+            }
+        fi
+        ;;
+esac
+
+if which pbcopy >/dev/null 2>&1 ; then 
+    # Mac  
+    alias -g C='| pbcopy'
+elif which xsel >/dev/null 2>&1 ; then 
+    # Linux
+    alias -g C='| xsel --input --clipboard'
+elif which putclip >/dev/null 2>&1 ; then 
+    # Cygwin 
+    alias -g C='| putclip'
+fi
+
+## TMUX
+# TMUX original function cdd
+autoload -Uz compinit
+compinit
+. ~/bin/cdd
+
+chpwd() {
+      _cdd_chpwd
+}
+
+# TMUX
+case "${TERM}" in
+    cygwin*)
+if [ ! -z `which tmux` ]; then
+  if [ $SHLVL = 1 ]; then
+    if [ $(( `ps aux | grep "tmux" | grep "$USER" | grep -v "grep" | wc -l` )) != 0 ]; then
+      echo -n 'Attach tmux session? [Y/n]'
+      read YN
+      [[ $YN = '' ]] && YN=y
+      [[ $YN = y ]] && tmux attach
+    fi
+  fi
+fi
+        ;;
+esac       
