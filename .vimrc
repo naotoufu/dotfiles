@@ -30,7 +30,26 @@ cmap <silent> <C-n> <ESC> :update<CR>:bn<CR>
 
 hi Comment ctermfg=9
 set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
+set fileformats=unix,dos,mac
 
 imap <C-b> <ESC>:read ~/.vim/bf<CR>i
 nmap <C-b> :read ~/.vim/bf<CR>
 vmap <C-b> "w!~/.vim/bf<CR>
+
+" Using the mouse on a terminal.
+if has('mouse')
+  set mouse=a
+  if has('mouse_sgr')
+    set ttymouse=sgr
+  elseif v:version > 703 || v:version is 703 && has('patch632') " I couldn't use has('mouse_sgr') :-(
+    set ttymouse=sgr
+  else
+    set ttymouse=xterm2
+  endif
+endif
+
+" make commpand shortcut
+"nmap  :write:make 
+"imap :write:make
+nmap  :make run <C-u>
+imap :make run <C-u> 
