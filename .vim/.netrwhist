@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/naoto/.dropbox'
+let g:netrw_dirhist_2='/Users/naoto/.dropbox/finderplugin'
+let g:netrw_dirhist_3='/Users/naoto/.dropbox'
+let g:netrw_dirhist_4='/Users/naoto/.dropbox/logs'
+let g:netrw_dirhist_5='/Users/naoto/.dropbox'
