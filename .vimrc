@@ -54,3 +54,52 @@ endif
 nmap  :make run <C-u>
 imap :make run <C-u> 
 
+"---------------------------
+" Start Neobundle Settings.
+"---------------------------
+" bundleで管理するディレクトリを指定
+set runtimepath+=~/.vim/bundle/neobundle.vim/
+ 
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+ 
+" neobundle自体をneobundleで管理
+NeoBundleFetch 'Shougo/neobundle.vim'
+ 
+" 今後このあたりに追加のプラグインをどんどん書いて行きます！！"
+ 
+call neobundle#end()
+ 
+" Required:
+filetype plugin indent on
+ 
+" 未インストールのプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定
+" 毎回聞かれると邪魔な場合もあるので、この設定は任意です。
+NeoBundleCheck
+ 
+"-------------------------
+" End Neobundle Settings.
+"-------------------------
+
+set nocompatible               " be iMproved
+filetype off                   " required!
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+" let Vundle manage Vundle
+" required!
+"Bundle 'gmarik/vundle'
+" My Bundles here:
+"
+" original repos on github
+Bundle 'tpope/vim-fugitive'
+" ...
+filetype plugin indent on     " required!
+"
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle command are not allowed..
