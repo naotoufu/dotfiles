@@ -54,6 +54,24 @@ endif
 nmap  :make run <C-u>
 imap :make run <C-u> 
 
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
 "---------------------------
 " Start Neobundle Settings.
 "---------------------------
@@ -66,21 +84,56 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " neobundle自体をneobundleで管理
 NeoBundleFetch 'Shougo/neobundle.vim'
  
-" 今後このあたりに追加のプラグインをどんどん書いて行きます！！"
-" NERDTreeを設定
+
+" 以下は必要に応じて追加
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'grep.vim'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
+"syntax proc
+NeoBundle 'vim-scripts/proc.vim'
+
+"Snippets
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
+
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimshell' 
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'ujihisa/vimshell-ssh'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'vim-jp/vimdoc-ja'
+NeoBundle 'kana/vim-smartchr'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'mattn/gist-vim'
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'othree/eregex.vim'
+NeoBundle 'cakebaker/scss-syntax.vim'
+NeoBundle 'jpo/vim-railscasts-theme'
+NeoBundle 'Sixeight/unite-grep'
+NeoBundle 'git://gist.github.com/411828.git', {'directory': 'endtagcomment'}
 call neobundle#end()
  
 " Required:
 filetype plugin indent on
  
-" 未インストールのプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定
-" 毎回聞かれると邪魔な場合もあるので、この設定は任意です。
 NeoBundleCheck
  
 "-------------------------
