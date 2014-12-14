@@ -67,7 +67,13 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
  
 " 今後このあたりに追加のプラグインをどんどん書いて行きます！！"
- 
+" NERDTreeを設定
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'Townk/vim-autoclose'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'grep.vim'
+NeoBundle 'scrooloose/syntastic'
 call neobundle#end()
  
 " Required:
