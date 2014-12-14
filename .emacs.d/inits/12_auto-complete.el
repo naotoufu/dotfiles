@@ -1,8 +1,8 @@
 (require 'auto-complete-config nil 'noerror)
 (add-to-list 'ac-dictionary-directories
-             (concat dropbox-emacs-dir "/ac-dict"))
+              "~/ac-dict")
 (setq ac-comphist-file
-             (concat dropbox-emacs-dir "/ac-dict"))
+              "~/ac-dict")
 (ac-config-default)
 (ac-flyspell-workaround)
 
