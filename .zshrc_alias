@@ -233,3 +233,9 @@ darwin*)
 alias tmux='env LD_LIBRARY_PATH=~/opt/libevent/lib ~/opt/tmux/bin/tmux'
 ;;
 esac
+
+#git
+alias gitp='git pull origin master'
+alias gitc='git checkout'
+alias gits='git status'
+alias gitb='git branch'
