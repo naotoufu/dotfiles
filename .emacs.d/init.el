@@ -8,11 +8,11 @@
 (cond ((>= (string-to-number emacs-version) 24.3)
        (add-to-list 'package-obsolete-alist "cl-lib-0.5"))
       (t
-       (load "~/Dropbox/.emacs.d/elpa/cl-lib-0.5/cl-lib")
+       (load "~/.emacs.d/elpa/cl-lib-0.5/cl-lib")
        ;; kbd のエイリアス（上記で説明したもの）を行う場合は、以下をアンコメントする
        ;; (defalias 'kbd 'read-kbd-macro)
        ))
-(setq package-user-dir (concat dropbox-emacs-dir "/elpa/"))
+(setq package-user-dir ("~/.emacs.d/elpa/"))
 (package-initialize)
 
 
@@ -48,7 +48,7 @@
 
 ; init loader
 ;; ~/.emacs.d/site-lisp 以下全部読み込み
-(let ((default-directory (expand-file-name (concat dropbox-emacs-dir "/site-lisp"))))
+(let ((default-directory (expand-file-name "~/.emacs.d/site-lisp"))))
   (add-to-list 'load-path default-directory)
   (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
       (normal-top-level-add-subdirs-to-load-path)))
@@ -56,14 +56,14 @@
 (require 'init-loader)
 (custom-set-variables
  '(init-loader-show-log-after-init nil))
-(init-loader-load (concat dropbox-emacs-dir "/inits/"))
+(init-loader-load ("~/.emacs.d/inits/"))
 
 ;; OSごとに異なる設定ファイルを読み込む
 (cond
  ((eq window-system 'w32)
-  (load (concat dropbox-emacs-dir "/init-windows")))
+  (load "~/.emacs.d/init-windows"))
  ((or (eq window-system 'ns) (eq window-system 'mac))
-  (load (concat dropbox-emacs-dir "/init-macos"))))
+  (load "~/.emacs.d/init-macos")))
 
 ;; after init
 (add-hook 'after-init-hook
