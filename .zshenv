@@ -1,7 +1,7 @@
 
 
 case ${OSTYPE} in
-    darwin*)
+    darwin*|linux*)
 typeset -U path
 path=(~/bin /other/things/in/path /usr/local/mysql/bin
     /usr/local/bin /sw/bin/ /opt/local/bin /opt/local/sbin
