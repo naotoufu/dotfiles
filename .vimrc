@@ -129,6 +129,9 @@ NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'jpo/vim-railscasts-theme'
 NeoBundle 'Sixeight/unite-grep'
 NeoBundle 'git://gist.github.com/411828.git', {'directory': 'endtagcomment'}
+
+NeoBundle 'soramugi/auto-ctags.vim'
+NeoBundle "ctrlpvim/ctrlp.vim"
 call neobundle#end()
  
 " Required:
@@ -140,3 +143,6 @@ NeoBundleCheck
 " End Neobundle Settings.
 "-------------------------
 
+let g:auto_ctags = 1
+let g:auto_ctags_directory_list = ['.git', '.svn']
+set tags+=.git/tags
