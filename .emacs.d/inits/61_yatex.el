@@ -1,4 +1,4 @@
-(setq load-path (cons (concat dropbox-emacs-dir "/site-lisp/yatex") load-path))
+(setq load-path (cons "~/site-lisp/yatex") load-path))
 
 ;; YaTeX-mode
 (setq auto-mode-alist
