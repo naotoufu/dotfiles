@@ -28,6 +28,12 @@ imap <silent> <C-n> <ESC> :update<CR>:bn<CR>
 vmap <silent> <C-n> <ESC> :update<CR>:bn<CR>
 cmap <silent> <C-n> <ESC> :update<CR>:bn<CR> 
 
+"ビープ音すべてを無効にする
+set visualbell t_vb=
+set noerrorbells "エラーメッセージの表示時にビープを鳴らさない
+
+
+" make commpand shortcut
 hi Comment ctermfg=9
 set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
 set fileformats=unix,dos,mac

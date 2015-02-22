@@ -1,0 +1,9 @@
+*.o
+*.elc
+*~
+elpa/
+emacs.d/auto-save-list/
+emacs.d/history
+.emacs.d/auto-save-list/
+.emacs.d/history
+vim/

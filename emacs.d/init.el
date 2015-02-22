@@ -12,6 +12,9 @@
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
+;; パッケージ情報の更新
+;;(package-refresh-contents)
+
 ;; インストールするパッケージ
 (defvar my/favorite-packages
   '(
@@ -103,6 +106,9 @@
 (show-paren-mode t)
 (setq show-paren-delay 0)
 (setq show-paren-style 'expression)
+
+;; beep sound ignore
+(setq ring-bell-function 'ignore)
 
 ;; Color in the range of brackets
 (set-face-background 'show-paren-match-face "#500")
@@ -208,8 +214,8 @@
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-(flycheck-add-next-checker 'javascript-jshint
-                           'javascript-gjslint)
+;; (flycheck-add-next-checker 'javascript-jshint
+;;                            'javascript-gjslint)
 
 ;; magit
 (require 'magit)
