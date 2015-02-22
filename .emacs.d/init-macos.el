@@ -12,7 +12,6 @@
 	 (height              . 47))   ; フレーム高(文字数)
        initial-frame-alist))
 
-
 ;; Mac用フォント設定
 ;; http://tcnksm.sakura.ne.jp/blog/2012/04/02/emacs/
 

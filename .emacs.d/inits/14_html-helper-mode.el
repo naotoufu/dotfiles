@@ -1,4 +1,4 @@
- (autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
+ ;; (autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
 ;; (setq auto-mode-alist (cons '("\\.html$" . html-helper-mode)       auto-mode-alist))
 ;; (setq auto-mode-alist (cons '("\\.asp$" . html-helper-mode)        auto-mode-alist))
 ;; (setq auto-mode-alist (cons '("\\.phtml$" . html-helper-mode)      auto-mode-alist))
@@ -13,7 +13,7 @@
 ;;     "<script type=\"text/javascript\" src=\"/~okumura/head.js\"></script>\n"
 ;;     "</head>\n"
 ;;     "<body>\n\n<h1>" p "</h1>\n\n" p
-;;     "\n\n<hr>\n\n<p class=\"noindent\">リンクはご自由にどうぞ。\n\n"
+;;     "\n\n<hr>\n\n<p class=\"noindent\">リンクはご自由にどうぞ。\n\n"
 ;;     "<p class=\"noindent\"><a href=\"http://www.matsusaka-u.ac.jp/\">松阪大学</a>\n"
 ;;     "<a href=\"/~okumura/\">奥村晴彦</a>\n"
 ;;     "<a href=\"mailto:okumura@matsusaka-u.ac.jp\">"

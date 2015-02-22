@@ -213,9 +213,6 @@
 ;; rainbow-delimiters-mode
 ; (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
 
-;; To enable: put the following in your .emacs file:
-(add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
-
 ;; コントロール用のバッファを同一フレーム内に表示
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 ;; diffのバッファを上下ではなく左右に並べる

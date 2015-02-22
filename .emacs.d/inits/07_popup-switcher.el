@@ -1,7 +1,7 @@
-(require 'popup-switcher)
-(global-set-key "\C-xo" 'psw-switch-buffer)
-(setq psw-in-window-center t)
-(setq psw-use-flx t)
+;; (require 'popup-switcher)
+;; (global-set-key "\C-xo" 'psw-switch-buffer)
+;; (setq psw-in-window-center t)
+;; (setq psw-use-flx t)
 ;; Activate semantic
 ;(semantic-mode 1)
 
@@ -11,5 +11,5 @@
 
 ;; (eval-after-load "eassist"
 ;;  '(global-set-key [f3] 'psw-switch-function))
- (setq popup-select-windows 2)
+ ;; (setq popup-select-windows 2)
 

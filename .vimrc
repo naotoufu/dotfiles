@@ -19,14 +19,14 @@ set expandtab
 set shiftwidth=2
 set autoindent
 set smartindent
-nmap <silent> <Tab> 15<Right>
-vmap <silent> <Tab> <C-o>15<Right>
-nmap <silent> <S-Tab> 15<Left>
-vmap <silent> <S-Tab> <C-o>15<Left>
-nmap <silent> <C-n> 	  :update<CR>:bn<CR>
-imap <silent> <C-n> <ESC> :update<CR>:bn<CR>
-vmap <silent> <C-n> <ESC> :update<CR>:bn<CR>
-cmap <silent> <C-n> <ESC> :update<CR>:bn<CR> 
+"nmap <silent> <Tab> 15<Right>
+"vmap <silent> <Tab> <C-o>15<Right>
+"nmap <silent> <S-Tab> 15<Left>
+"vmap <silent> <S-Tab> <C-o>15<Left>
+"nmap <silent> <C-n> 	  :update<CR>:bn<CR>
+"imap <silent> <C-n> <ESC> :update<CR>:bn<CR>
+"vmap <silent> <C-n> <ESC> :update<CR>:bn<CR>
+"cmap <silent> <C-n> <ESC> :update<CR>:bn<CR> 
 
 hi Comment ctermfg=9
 set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
@@ -101,7 +101,7 @@ NeoBundle 'Shougo/vimproc.vim', {
 \     'unix' : 'gmake',
 \    },
 \ }
-"syntax proc
+"syntax Oracle proc
 NeoBundle 'vim-scripts/proc.vim'
 
 "Snippets
@@ -132,6 +132,7 @@ NeoBundle 'git://gist.github.com/411828.git', {'directory': 'endtagcomment'}
 
 NeoBundle 'soramugi/auto-ctags.vim'
 NeoBundle "ctrlpvim/ctrlp.vim"
+NeoBundle 'soramugi/auto-ctags.vim'
 call neobundle#end()
  
 " Required:
@@ -146,3 +147,7 @@ NeoBundleCheck
 let g:auto_ctags = 1
 let g:auto_ctags_directory_list = ['.git', '.svn']
 set tags+=.git/tags
+
+inoremap ;; <C-O>$;<CR>
+
+helptags ~/.vim/bundle/vimdoc-ja/doc

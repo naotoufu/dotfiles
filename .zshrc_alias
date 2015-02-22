@@ -228,11 +228,11 @@ alias javac="cocot javac"
 esac
 
 # tmux
-case "${OSTYPE}" in
-darwin*)
-alias tmux='env LD_LIBRARY_PATH=~/opt/libevent/lib ~/opt/tmux/bin/tmux'
-;;
-esac
+#case "${OSTYPE}" in
+#darwin*)
+#alias tmux='env LD_LIBRARY_PATH=~/opt/libevent/lib ~/opt/tmux/bin/tmux'
+#;;
+#esac
 
 #git
 alias gitp='git pull origin master'
