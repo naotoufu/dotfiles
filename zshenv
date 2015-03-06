@@ -1,5 +1,3 @@
-
-
 case ${OSTYPE} in
     darwin*|linux*)
 typeset -U path
