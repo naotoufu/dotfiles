@@ -54,12 +54,32 @@ if has('mouse')
   endif
 endif
 
+<<<<<<< HEAD
 " make commpand shortcut
 "nmap  :write:make 
 "imap :write:make
 nmap  :make run <C-u>
 imap :make run <C-u> 
 
+=======
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+>>>>>>> 97a693464cde8b762fe078f9b6dcb5b42b9e677b
 
 "---------------------------
 " Start Neobundle Settings.
@@ -76,7 +96,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " 以下は必要に応じて追加
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'grep.vim'
@@ -98,9 +117,9 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/vimshell' 
+"NeoBundle 'Shougo/unite.vim'
+"NeoBundle 'Shougo/vimfiler'
+"NeoBundle 'Shougo/vimshell' 
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'ujihisa/unite-colorscheme'
@@ -109,7 +128,6 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'mattn/emmet-vim'
-NeoBundle 'mattn/gist-vim'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'hail2u/vim-css3-syntax'
@@ -117,8 +135,6 @@ NeoBundle 'othree/eregex.vim'
 NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'jpo/vim-railscasts-theme'
 NeoBundle 'Sixeight/unite-grep'
-NeoBundle 'git://gist.github.com/411828.git', {'directory': 'endtagcomment'}
-
 NeoBundle 'soramugi/auto-ctags.vim'
 NeoBundle "ctrlpvim/ctrlp.vim"
 NeoBundle 'soramugi/auto-ctags.vim'
@@ -133,6 +149,7 @@ NeoBundleCheck
 " End Neobundle Settings.
 "-------------------------
 
+<<<<<<< HEAD
 let g:auto_ctags = 1
 let g:auto_ctags_directory_list = ['.git', '.svn']
 set tags+=.git/tags
@@ -158,3 +175,5 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
+=======
+>>>>>>> 97a693464cde8b762fe078f9b6dcb5b42b9e677b
