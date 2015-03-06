@@ -54,14 +54,14 @@ if has('mouse')
   endif
 endif
 
-<<<<<<< HEAD
+
 " make commpand shortcut
 "nmap  :write:make 
 "imap :write:make
 nmap  :make run <C-u>
 imap :make run <C-u> 
 
-=======
+
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -79,7 +79,6 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
->>>>>>> 97a693464cde8b762fe078f9b6dcb5b42b9e677b
 
 "---------------------------
 " Start Neobundle Settings.
@@ -149,7 +148,6 @@ NeoBundleCheck
 " End Neobundle Settings.
 "-------------------------
 
-<<<<<<< HEAD
 let g:auto_ctags = 1
 let g:auto_ctags_directory_list = ['.git', '.svn']
 set tags+=.git/tags
@@ -175,5 +173,3 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
-=======
->>>>>>> 97a693464cde8b762fe078f9b6dcb5b42b9e677b
