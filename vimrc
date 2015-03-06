@@ -19,6 +19,8 @@ set expandtab
 set shiftwidth=2
 set autoindent
 set smartindent
+set iminsert=0
+set imsearch=-1
 nmap <silent> <Tab> 15<Right>
 vmap <silent> <Tab> <C-o>15<Right>
 nmap <silent> <S-Tab> 15<Left>
@@ -87,7 +89,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " 以下は必要に応じて追加
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'Townk/vim-autoclose'
+
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'grep.vim'
 NeoBundle 'scrooloose/syntastic'
@@ -112,6 +114,7 @@ NeoBundle 'Shougo/neosnippet-snippets'
 "NeoBundle 'Shougo/vimfiler'
 "NeoBundle 'Shougo/vimshell' 
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'ujihisa/vimshell-ssh'
