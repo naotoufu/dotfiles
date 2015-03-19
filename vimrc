@@ -9,6 +9,7 @@ highlight CursorLine ctermfg=none ctermbg=darkgrey cterm=none
 highlight MatchParen ctermfg=none ctermbg=darkgrey 
 highlight Comment ctermfg=DarkGreen ctermbg=NONE
 highlight Directory ctermfg=DarkGreen ctermbg=NONE
+set undofile
 set laststatus=2
 set statusline=%F%r%h%=
 set number
@@ -19,6 +20,11 @@ set expandtab
 set shiftwidth=2
 set autoindent
 set smartindent
+"for windows IME
+set iminsert=0
+set imsearch=-1
+set tags=./tags,tags,../tags
+
 "nmap <silent> <Tab> 15<Right>
 "vmap <silent> <Tab> <C-o>15<Right>
 "nmap <silent> <S-Tab> 15<Left>
@@ -60,7 +66,7 @@ endif
 "imap :write:make
 nmap  :make run <C-u>
 imap :make run <C-u> 
-
+map <F8> :w <CR> :!gcc % -o %< && ./%< <CR>
 
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -94,6 +100,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
  
 
 " 以下は必要に応じて追加
+NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'thinca/vim-quickrun'
@@ -116,9 +123,9 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 
-"NeoBundle 'Shougo/unite.vim'
-"NeoBundle 'Shougo/vimfiler'
-"NeoBundle 'Shougo/vimshell' 
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimshell' 
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'ujihisa/unite-colorscheme'
@@ -135,7 +142,6 @@ NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'jpo/vim-railscasts-theme'
 NeoBundle 'Sixeight/unite-grep'
 NeoBundle 'soramugi/auto-ctags.vim'
-NeoBundle "ctrlpvim/ctrlp.vim"
 NeoBundle 'soramugi/auto-ctags.vim'
 call neobundle#end()
  
@@ -153,8 +159,6 @@ let g:auto_ctags_directory_list = ['.git', '.svn']
 set tags+=.git/tags
 
 inoremap ;; <C-O>$;<CR>
-
-helptags ~/.vim/bundle/vimdoc-ja/doc
 
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
