@@ -19,7 +19,7 @@
 (defvar my/favorite-packages
   '(
     ;;;; for auto-complete
-    ;; auto-complete fuzzy popup pos-tip
+    auto-complete fuzzy popup pos-tip
 
     ;;;; buffer utils
     ;; popwin elscreen yascroll buffer-move
@@ -41,6 +41,7 @@
 
     ;;;; snippet
     ;; yasnippet
+    java-snippets
 
     ;;;;mode
     ;; js2-mode ruby-mode cperl-mode 
@@ -50,7 +51,6 @@
     eldoc-extension
     c-eldoc
     
-
     ;;;;etc
     ;; auto-async-byte-compile
     ;; direx
@@ -61,6 +61,9 @@
     color-theme
     point-undo
     redo+
+    quickrun
+    malabar-mode
+
     ))
 
 ;; my/favorite-packagesからインストールしていないパッケージをインストール
@@ -72,7 +75,8 @@
 
 ;; helm
 (require 'helm-config)
-
+;; enjoy helm completion in your favourites Emacs commands (e.g M-x, C-x C-f, etc...).
+(helm-mode 1)
 
 ;;color theme
 (when (and (require 'color-theme nil t) (window-system))
@@ -219,3 +223,20 @@
 
 ;; magit
 (require 'magit)
+
+;; auto complete mode
+(require 'auto-complete-config)
+(ac-config-default)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(desktop-save-mode t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
