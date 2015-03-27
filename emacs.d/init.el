@@ -5,6 +5,16 @@
 ;; goto-line
 (global-set-key (kbd "M-g") 'goto-line)
 
+;; privious other window
+(global-set-key [C-S-tab] 
+    (lambda ()
+      (interactive)
+      (other-window -1)))
+
+(define-key ctl-x-map "p"
+    (lambda ()
+      (interactive)
+      (other-window -1)))
 
 ;; package.el setting
 (require 'package)
@@ -34,17 +44,16 @@
     ;; jedi
 
     ;;;; helm
-    helm ;; helm-ag helm-descbinds helm-ls-git
+    helm helm-ag helm-descbinds helm-ls-git
 
     ;;;; git
     magit ;;git-gutter
 
     ;;;; snippet
-    ;; yasnippet
-    java-snippets
+    yasnippet java-snippets
 
     ;;;;mode
-    ;; js2-mode ruby-mode cperl-mode 
+    emmet-mode js2-mode ruby-mode cperl-mode 
 
     ;; doc
     eldoc
@@ -83,10 +92,10 @@
   (color-theme-initialize)
   (color-theme-clarity))
 
-;; 括弧の範囲色
-(set-face-background 'show-paren-match-face "#500")
-;; 選択領域の色
-(set-face-background 'region "#555")
+;; ;; 括弧の範囲色
+;; (set-face-background 'show-paren-match-face "#500")
+;; ;; 選択領域の色
+;; (set-face-background 'region "#555")
 
 ;; Hide startup
 (setq inhibit-startup-screen t)
@@ -227,6 +236,13 @@
 ;; auto complete mode
 (require 'auto-complete-config)
 (ac-config-default)
+;; グローバルでauto-completeを利用
+(global-auto-complete-mode t)
+
+;; yasnippet
+(require 'yasnippet)
+(yas-global-mode 1)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
