@@ -25,7 +25,6 @@ path=(
     /local/postfix
     /cygdrive/c/vim/vim74
     /cygdrive/c/gtk/bin
-    /cygdrive/c/emacs-24.3/bin
     /cygdrive/c/Program\ Files/Inkscape
     /cygdrive/c/Program\ Files/GIMP\ 2/bin
     /cygdrive/c/Program\ Files/Mozilla\ Firefox
@@ -47,7 +46,7 @@ case ${OSTYPE} in
         #export EMACS_SERVER_FILE="C:/Users/netforce/Dropbox/.emacs.d/server/server"
         export EMACS_SERVER_FILE=""
         # ALTERNATE_EDITOR
-        export ALTERNATE_EDITOR="C:/emacs-24.3/bin/runemacs.exe"
+        export ALTERNATE_EDITOR="C:/emacs-24.4-bin-i686-pc-mingw32/bin"
         #export ALTERNATE_EDITOR=""
 
 # JAVA_HOME

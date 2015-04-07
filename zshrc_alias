@@ -221,8 +221,9 @@ alias nbtstat="cocot NBTSTAT"
 alias traceroute="cocot TRACERT"
 alias route="cocot ROUTE"
 alias netstat="cocot NETSTAT" 
-alias java="cocot java"
-alias javac="cocot javac"
+alias javac="javac -J-Dfile.encoding=UTF8"
+alias java="java -Dfile.encoding=UTF8"
+alias javadoc="cocot javadoc"
 
 ;;
 esac
