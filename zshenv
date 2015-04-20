@@ -14,6 +14,7 @@ typeset -U path cdpath fpath manpath
 
 path=(
    ~/bin
+   ~/bin/windows
     /bin
     /sbin
     /lib
@@ -52,7 +53,7 @@ case ${OSTYPE} in
 # JAVA_HOME
 #export JAVA_HOME='/cygdrive/c/Program Files/Java/jdk1.6.0_31/bin'
 #export JAVA_HOME='/cygdrive/c/Program Files/Java/jdk1.8.0_25/bin'
-export JAVA_HOME='/cygdrive/c/Program Files/Java/jdk1.8.0_05/bin'
+export JAVA_HOME='/cygdrive/c/Program Files/Java/jdk1.8.0_05/'
 
 # Apache_HOME
 export APACHE_HOME='/cygdrive/c/Apache Software Foundation/Apache2.2'
