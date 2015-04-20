@@ -18,6 +18,8 @@ ln -sf ~/dotfiles/zshrc	~/.zshrc
 ln -sf ~/dotfiles/zshrc.mine	~/.zshrc.mine
 ln -sf ~/dotfiles/zshenv	~/.zshenv
 ln -sf ~/dotfiles/zshrc_alias	~/.zshrc_alias
-sudo yum -y install zsh
-sudo chsh -s `which zsh`
+sudo yum -y install zsh git vim make tmux gcc
+sudo apt-get -y install zsh git vim make tmux gcc
+sudo chsh -s `which zsh`#change shell for root
+chsh -s `which zsh`
 exec zsh -l

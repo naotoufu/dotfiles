@@ -124,6 +124,7 @@ NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimshell' 
 NeoBundle 'tpope/vim-surround'
