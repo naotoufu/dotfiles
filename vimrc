@@ -41,7 +41,7 @@ set noerrorbells "エラーメッセージの表示時にビープを鳴らさない
 
 " make commpand shortcut
 hi Comment ctermfg=9
-set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
+set fileencodings=iso-2022-jp-3,iso-2022-jp,euc-jisx0213,euc-jp,utf-8,ucs-bom,euc-jp,eucjp-ms,cp932
 set fileformats=unix,dos,mac
 
 "imap <C-b> <ESC>:read ~/.vim/bf<CR>i
@@ -122,8 +122,8 @@ NeoBundle 'vim-scripts/proc.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
-
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimshell' 
 NeoBundle 'tpope/vim-surround'
@@ -143,6 +143,7 @@ NeoBundle 'jpo/vim-railscasts-theme'
 NeoBundle 'Sixeight/unite-grep'
 NeoBundle 'soramugi/auto-ctags.vim'
 NeoBundle 'soramugi/auto-ctags.vim'
+NeoBundle 'tomtom/tcomment_vim'
 call neobundle#end()
  
 " Required:
@@ -158,12 +159,16 @@ let g:auto_ctags = 1
 let g:auto_ctags_directory_list = ['.git', '.svn']
 set tags+=.git/tags
 
-inoremap ;; <C-O>$;<CR>
+"inoremap ;; <C-O>$;<CR>
+inoremap ;; <C-O>$;
 
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" auto complete
+let g:neocomplcache_enable_at_startup = 1
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
