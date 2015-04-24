@@ -32,6 +32,7 @@ setopt no_beep
 setopt extended_glob
 
 ## etc...
+setopt cdable_vars
 
 stty stop undef
 

@@ -97,9 +97,10 @@ call neobundle#begin(expand('~/.vim/bundle/'))
  
 " neobundle自体をneobundleで管理
 NeoBundleFetch 'Shougo/neobundle.vim'
- 
 
 " 以下は必要に応じて追加
+NeoBundle 'vim-scripts/javacomplete' 
+NeoBundle 'vim-scripts/javaDoc.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Townk/vim-autoclose'
@@ -119,9 +120,10 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundle 'vim-scripts/proc.vim'
 
 "Snippets
-NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
+
+NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/vimfiler'
@@ -131,7 +133,7 @@ NeoBundle 'tpope/vim-repeat'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'ujihisa/vimshell-ssh'
 NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'vim-jp/vimdoc-ja'
+" NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mattn/webapi-vim'
@@ -159,8 +161,8 @@ let g:auto_ctags = 1
 let g:auto_ctags_directory_list = ['.git', '.svn']
 set tags+=.git/tags
 
-"inoremap ;; <C-O>$;<CR>
-inoremap ;; <C-O>$;
+inoremap ;; <C-O>$;<CR>
+" inoremap ;; <C-O>$;
 
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -182,4 +184,16 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
+
+" Enable omni completion.
+if has("autocmd")
+  autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+endif
+
+" javadoc
 
