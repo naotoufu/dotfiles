@@ -25,6 +25,10 @@ set iminsert=0
 set imsearch=-1
 set tags=./tags,tags,../tags
 
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
 "nmap <silent> <Tab> 15<Right>
 "vmap <silent> <Tab> <C-o>15<Right>
 "nmap <silent> <S-Tab> 15<Left>
@@ -100,6 +104,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
  
 
 " 以下は必要に応じて追加
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'pekepeke/ref-javadoc'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Townk/vim-autoclose'
@@ -119,6 +125,7 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundle 'vim-scripts/proc.vim'
 
 "Snippets
+NeoBundle 'vim-scripts/javacomplete'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
@@ -183,3 +190,5 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
+let g:ref_javadoc_cmd  = 'firefox'
+let g:ref_javadoc_path = '/usr/share/doc/openjdk-7-jre-headless/jdk/api/javadoc/doclet/'
