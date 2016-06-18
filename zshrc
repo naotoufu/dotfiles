@@ -37,9 +37,10 @@ esac
 #
 setopt auto_cd
 
-# auto directory pushd that you can get dirs list by cd -[tab]
+# auto directory eushd that you can get dirs list by cd -[tab]
 #
 setopt auto_pushd
+setopt pushd_ignore_dups 
 
 # command correct edition before each completion attempt
 #
