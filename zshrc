@@ -1,225 +1,55 @@
-# users generic .zshrc file for zsh(1)
+########################################
+#
+# Sample .zshrc file
+# initial selias ls='ls -F' l'ls -a' ll='ls -la'tup file for only interactive zsh
+# This file is read after .zshenv file is read.
+#
+########################################
 
-## Environment variable configuration####
-#
-# LANG
-#
-export LANG=ja_JP.UTF-8
-case ${UID} in
-    0)
-        LANG=C
-        ;;
-esac
+###
+# Set Shell variable
+# WORDCHARS=$WORDCHARS's,/,,
+HISTSIZE=10000 HISTFILE=~/.zsh_history SAVEHIST=10000
+PROMPT='%m{%n}%% '
+RPROMPT='[%~]'
 
-
-## Default shell configuration
-#
-# set prompt
-#
-autoload colors
-colors
-case ${UID} in
-    0)
-        PROMPT="%{${fg[cyan]}%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') %B%{${fg[red]}%}%/#%{${reset_color}%}%b "
-        PROMPT2="%B%{${fg[red]}%}%_#%{${reset_color}%}%b "
-        SPROMPT="%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
-        ;;
-    *)
-        PROMPT="%{${fg[red]}%}%/%%%{${reset_color}%} "
-        PROMPT2="%{${fg[red]}%}%_%%%{${reset_color}%} "
-        SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
-        [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-        PROMPT="%{${fg[cyan]}%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"
-        ;;
-esac
-
-# auto change directory
-#
-setopt auto_cd
-
-# auto directory eushd that you can get dirs list by cd -[tab]
-#
+# Set shell options
+setopt auto_cd auto_remove_slash auto_name_dirs
 setopt auto_pushd
-setopt pushd_ignore_dups 
+setopt extended_history hist_ignore_dups hist_ignore_space prompt_subst
+setopt hist_save_no_dups
+setopt extended_glob list_types no_beep always_last_prompt
+setopt cdable_vars sh_word_split auto_param_keys pushd_ignore_dups
+setopt autonamedirs
+#setopt auto_menu correct rm_star_silent sun_keyboard_hack
+setopt share_history inc_append_history
+setopt appendhistory
 
-# command correct edition before each completion attempt
-#
-setopt correct
+# Alias and functions
+alias copy='cp -ip' del='rm -i' move='mv -i'
+alias fullreset='echo "\ec\ec"'
+h () {history $* | less}
+alias ja='LANG=jaJP.UTF8 XMODIFIERS=@im=kinput2'
+#alias l=ls ls='ls -F' la='ls -a' ll='ls -lFa --color=auto' ltr='ls -ltr --color=auto' l.='ls -ld'
+alias l=ls ls='ls -FG' la='ls -a' ll='ls -lFaG ' ltr='ls -ltrG ' l.='ls -ld'
+mdcd  () {mkdir -p "$@" && cd "$*[-1]"}
+mdpu  () {mkdir -p "$@" && pushd "$*[-1]"}
+alias pu=pushd po=popd dir='dirs -v'
 
-# compacked complete list display
-#
-setopt list_packed
+# Suffix aliases
+alias -s pdf=acroread dvi=xdvi
+alias -s {odt,ods,odp,doc,xls,ppt}=soffice
+alias -s {tgz,lzh,zip,zrc}=file-roller
 
-# no remove postfix slash of command line
-#
-setopt noautoremoveslash
+# global aliases
+alias -g N='> /dev/null 2>&1'
+alias -g L='| less'
 
-# no beep sound when complete list displayed
-#
-setopt nolistbeep
-
-
-## Keybind configuration
-#
-# emacs like keybind (e.x. Ctrl-a gets to line head and Ctrl-e gets
-#   to end) and something additions
-#
-#bindkey -e
-#bindkey "^[[1~" beginning-of-line # Home gets to line head
-#bindkey "^[[4~" end-of-line # End gets to line end
-#bindkey "^[[3~" delete-char # Del
-
-# vim like keybind (e.x. 0 gets to line head and $ gets
+# binding keys
 bindkey -v
 
-# historical backward/forward search with linehead string binded to ^P/^N
-#
-autoload history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^p" history-beginning-search-backward-end
-bindkey "^n" history-beginning-search-forward-end
-bindkey "\\ep" history-beginning-search-backward-end
-bindkey "\\en" history-beginning-search-forward-end
-
-# reverse menu completion binded to Shift-Tab
-#
-bindkey "\e[Z" reverse-menu-complete
+bindkey '^p' history-beginning-search-backward
+bindkey '^n' history-beginning-search-forward
 
 
-## Command history configuration
-#
-HISTFILE=${HOME}/.zsh_history
-HISTSIZE=50000
-SAVEHIST=50000
-setopt hist_ignore_dups     # ignore duplication command history list
-setopt share_history        # share command history data
-
-## Screenでのコマンド共有用
-## シェルを横断して.zsh_historyに記録
-setopt inc_append_history
-
-## Completion configuration
-#
-fpath=(${HOME}/Dropbox/.zsh/functions/Completion
-    ${HOME}/.zsh/functions/Completion
-    ${fpath})
-autoload -U compinit
-compinit
-
-
-## zsh editor
-#
-autoload zed
-
-
-## Prediction configuration
-#
-#autoload predict-on
-#predict-off
-
-
-## Alias configuration
-#
-# expand aliases before completing
-#
-setopt complete_aliases     # aliased ls needs if file/dir completions work
-
-alias where="command -v"
-alias j="jobs -l"
-
-case "${OSTYPE}" in
-    freebsd*|darwin*)
-        alias ls="ls -G -w"
-        alias l="ls -G -w"
-        ;;
-    linux*)
-        alias ls="ls --color"
-        alias l="ls --color"
-        ;;
-    cygwin*)
-        alias ls="ls -hF --color --ignore={NTUSER\*,ntuser\*}"
-        alias l="ls --color --ignore={NTUSER\*,ntuser\*}"
-        ;;
-esac
-
-alias la="ls -a"
-alias lf="ls -F"
-alias ll="ls -l"
-
-alias du="du -h"
-alias df="df -h"
-
-alias su="su -l"
-
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
-
-[ -f ${HOME}/.zshrc_alias ] && source ${HOME}/.zshrc_alias
-
-## terminal configuration
-#
-case "${TERM}" in
-    screen*)
-        TERM=rxvt
-        ;;
-    vt100|vt200)  #My CYGWIN Defoult TERM
-        TERM=cygwin
-        ;;
-esac
-
-case "${TERM}" in
-    xterm|xterm-color)
-        export LSCOLORS=gxfxcxdxbxegedabagacad
-        export LS_COLORS='di=36:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-        zstyle ':completion:*' list-colors 'di=36' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-        ;;
-    kterm-color)
-        stty erase '^H'
-        export LSCOLORS=exfxcxdxbxegedabagacad
-        export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-        zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-        ;;
-    kterm)
-        stty erase '^H'
-        ;;
-    cons25)
-        unset LANG
-        export LSCOLORS=ExFxCxdxBxegedabagacad
-        export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-        zstyle ':completion:*' list-colors 'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
-        ;;
-    jfbterm-color)
-        export LSCOLORS=gxFxCxdxBxegedabagacad
-        export LS_COLORS='di=01;36:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-        zstyle ':completion:*' list-colors 'di=;36;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
-        ;;
-    rxvt)
-        export LSCOLORS=gxfxcxdxbxegedabagacad
-        export LS_COLORS='di=36:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-        zstyle ':completion:*' list-colors 'di=36' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-        ;;
-    cygwin)
-        export LSCOLORS=gxfxcxdxbxegedabagacad
-        export LS_COLORS='di=36:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-        zstyle ':completion:*' list-colors 'di=36' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-        #    export LSCOLORS=exfxcxdxbxegedabagacad
-        #    export LS_COLORS='di=01;34:ln=01;36:ex=01;32:*.tar=01;31:*.gz=01;31'
-        ;;
-esac
-
-# set terminal title including current directory
-#
-case "${TERM}" in
-    xterm|xterm-color|kterm|kterm-color)
-        precmd() {
-            echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
-        }
-        ;;
-esac
-
-
-## load user .zshrc configuration file
-#
-[ -f ${HOME}/.zshrc.mine ] && source ${HOME}/.zshrc.mine
+autoload -U compinit && compinit
