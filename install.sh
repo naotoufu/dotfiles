@@ -18,7 +18,9 @@ ln -sf ~/dotfiles/zshrc	~/.zshrc
 # ln -sf ~/dotfiles/zshrc.mine	~/.zshrc.mine
 ln -sf ~/dotfiles/zshenv	~/.zshenv
 # ln -sf ~/dotfiles/zshrc_alias	~/.zshrc_alias
-
+mkdir ~/work
+mkdir ~/private
+mkdir -p ~/Document/Swift
 sudo yum -y install zsh git vim make tmux gcc
 sudo apt-get -y install zsh git vim make tmux gcc
 sudo chsh -s `which zsh`#change shell for root
