@@ -17,3 +17,9 @@ if has ("autocmd")
 endif
 "colorscheme evening
 colorscheme desert
+autocmd BufNewFile,BufRead Matchfile set syntax=ruby expandtab ts=2 sw=2
+autocmd BufNewFile,BufRead Appfile set syntax=ruby expandtab ts=2 sw=2
+autocmd BufNewFile,BufRead Gymfile set syntax=ruby expandtab ts=2 sw=2
+autocmd BufNewFile,BufRead Fastfile set syntax=ruby expandtab ts=2 sw=2
+autocmd BufNewFile,BufRead Podfile* set syntax=ruby expandtab ts=2 sw=2
+autocmd BufNewFile,BufRead *.podspec set syntax=ruby expandtab ts=2 sw=2
