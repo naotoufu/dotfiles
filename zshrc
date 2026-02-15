@@ -26,6 +26,7 @@ SAVEHIST=50000
 
 setopt APPEND_HISTORY       # 逐次追記
 setopt SHARE_HISTORY        # 複数シェルで履歴共有
+setopt HIST_IGNORE_SPACE
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS
