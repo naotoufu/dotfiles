@@ -7,3 +7,4 @@ emacs.d/history
 .emacs.d/auto-save-list/
 .emacs.d/history
 vim/
+/.DS_Store
